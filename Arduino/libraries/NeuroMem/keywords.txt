@@ -1,0 +1,29 @@
+#######################################
+#  Driver for NeuroMem based Shields
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+NeuroMem	KEYWORD1
+NeuroShield	KEYWORD1
+BrainCard	KEYWORD1
+NM500	KEYWORD1
+NeuralNetwork	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+Learn	KEYWORD2
+BestMatch	KEYWORD2
+Classify	KEYWORD2
+Forget	KEYWORD2
+setContext	KEYWORD2
+getContext	KEYWORD2
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################

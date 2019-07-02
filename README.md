@@ -57,7 +57,7 @@ Fr more information on how to use the NeuroMem Console, click the Help button or
 - **CogniPat SDK** (https://www.general-vision.com/product/cp-sdk/)
 - **CogniPat SDK MatLab** (https://www.general-vision.com/product/cp-sdk-ml/)
 - **CogniPat SDK LabVIEW** (https://www.general-vision.com/product/cp-sdk-lv/)
-- **Hardware Development Kit for Diligent Arty Z7** board (coming soon)
+- **Hardware Development Kit for Diligent Arty Z7** board (https://www.general-vision.com/product/neuroshield-hdk-for-zynq/)
 
 
 ## Other interface

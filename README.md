@@ -13,35 +13,29 @@ and more.
 
 ## Arduino library & examples
 
-- **Academic scripts** to understand how easily you can teach the
-    neurons and query them for simple recognition status, or a best
-    match, or a detailed classification of the K nearest neurons.
-- **Motion recognition examples** using the on-board IMU from
-    Invensense (MPU6050) and the IMU from the Arduino101.
-- **Video recognition examples** using an ArduCAM shield.
+- **NeuroMem API library** establishes communication to the NeuroShield through SPI and access to the neurons of the NM500 chip (https://www.general-vision.com/documentation/TM_NeuroMem_Library_Arduino.pdf). Save data files and project files in a format compatible with the General Vision's Knowledge Builder tools and SDKs.
+- **Academic scripts** to understand how easily you can teach the neurons and query them for simple recognition status, or a best match, or a detailed classification of the K nearest neurons. https://www.general-vision.com/techbriefs/TB_TestNeurons_SimpleScript.pdf
+- **Motion recognition examples** using the on-board IMU from Invensense (MPU6050) and the IMU from the Arduino101. https://www.general-vision.com/techbriefs/TB_NeuroMemArduino_IMUDemo.pdf
+- **Video recognition examples** using an ArduCAM shield. https://www.general-vision.com/techbriefs/TB_NeuroMemArduino_VideoMonitoringDemo.pdf
 
-Save data files and project files in a format
-compatible with our Knowledge Builder tools and SDKs.
+
 
 
 ## Python library & examples for Raspberry Pi
 
-- **Academic scripts** to understand how easily you can teach the
-    neurons and query them for simple recognition status, or a best
-    match, or a detailed classification of the K nearest neurons.
+- **NeuroMem API library** establishes communication to the NeuroShield through SPI and access to the neurons of the NM500 chip (https://www.general-vision.com/documentation/TM_NeuroMem_API.pdf). Save data files and project files in a format compatible with the General Vision's Knowledge Builder tools and SDKs.
+- **Academic scripts** to understand how easily you can teach the neurons and query them for simple recognition status, or a best match, or a detailed classification of the K nearest neurons.
 - **Video recognition examples** using RaspiCam
 
 
-## GV_NeuroMem API
-- C++ library to access the neurons through the NeuroShield USB-serial port
-- Academic script to understand how to teach and query the neurons
-- For the latest documentation, refer to https://www.general-vision.com/documentation/TM_NeuroMem_API.pdf
+## GV_NeuroMem API for Windows
+- **NeuroMem API library (C/C++)** establishes communication to the NeuroShield through USB-serial port and access to the neurons of the NM500 chip (https://www.general-vision.com/documentation/TM_NeuroMem_API.pdf). Save data files and project files in a format compatible with the General Vision's Knowledge Builder tools and SDKs.
+- **Academic scripts** to understand how easily you can teach the neurons and query them for simple recognition status, or a best match, or a detailed classification of the K nearest neurons. https://www.general-vision.com/techbriefs/TB_TestNeurons_SimpleScript.pdf
 
 If you have never connected a device on your PC using a Cypress USB serial chip, the NeuroShield will not be detected unless you run the CypressDriverInstaller.exe
-
 Under the Windows Device Manager,the NeuroMem USB dongle should appear as a Universal Serial Bus Controller with the label "USB Composite device"
 
-## NeuroMem Console
+## NeuroMem Console for Windows
 Windows-based utility to test the good health of the dongle but also to experience with the neurons using simple Register Transfer Level transactions.
 
 Open the console using Start/General Vision/NeuroMem Console.

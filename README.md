@@ -6,7 +6,15 @@ of sensors including IMU, audio, environmental sensors, bio-signal, video
 and more.
 
 - NeuroShield is compatible with Arduino, Raspberry PI, and any microcontrollers which can support SPI
-    communication.
+    communication. 
+
+    D5	SPI_SELn, Enable access to the neurons via SPI. If not set the low, the interface is USB.
+    D13	SCK
+    D12	MISO
+    D11	MOSI
+    D7	SPI_CS_NMn, to access the neurons
+    D6	SPI_CS_SDn, to access SD card
+
 - NeuroShield can also be used as a simple USB dongle to empower PC-based applications with access
     to a NeuroMem network through a serial USB communication.
 
@@ -19,9 +27,9 @@ and more.
 - **Video recognition examples** using an ArduCAM shield. https://www.general-vision.com/techbriefs/TB_NeuroMemArduino_VideoMonitoringDemo.pdf
 
 
-
-
 ## Python library & examples for Raspberry Pi
+
+On the raspberry PI, do not forget to enable the SPI interface, under Interfacing options (run sudo raspi-config).
 
 - **NeuroMem API library** establishes communication to the NeuroShield through SPI and access to the neurons of the NM500 chip (https://www.general-vision.com/documentation/TM_NeuroMem_API.pdf). Save data files and project files in a format compatible with the General Vision's Knowledge Builder tools and SDKs.
 - **Academic scripts** to understand how easily you can teach the neurons and query them for simple recognition status, or a best match, or a detailed classification of the K nearest neurons.
@@ -34,6 +42,7 @@ and more.
 
 If you have never connected a device on your PC using a Cypress USB serial chip, the NeuroShield will not be detected unless you run the CypressDriverInstaller.exe
 Under the Windows Device Manager,the NeuroMem USB dongle should appear as a Universal Serial Bus Controller with the label "USB Composite device"
+
 
 ## NeuroMem Console for Windows
 Windows-based utility to test the good health of the dongle but also to experience with the neurons using simple Register Transfer Level transactions.

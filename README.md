@@ -6,14 +6,13 @@ of sensors including IMU, audio, environmental sensors, bio-signal, video
 and more.
 
 - NeuroShield is compatible with Arduino, Raspberry PI, and any microcontrollers which can support SPI
-    communication. 
-
-    D5	SPI_SELn, Enable access to the neurons via SPI. If not set the low, the interface is USB
-    D13	SCK
-    D12	MISO
-    D11	MOSI
-    D7	SPI_CS_NMn, to access the neurons
-    D6	SPI_CS_SDn, to access SD card
+    communication.
+    - D5	SPI_SELn, Enable access to the neurons via SPI. If not set the low, the interface is USB
+    - D13	SCK
+    - D12	MISO
+    - D11	MOSI
+    - D7	SPI_CS_NMn, to access the neurons
+    - D6	SPI_CS_SDn, to access SD card
 
 - NeuroShield can also be used as a simple USB dongle to empower PC-based applications with access to a NeuroMem network through a serial USB communication.
 

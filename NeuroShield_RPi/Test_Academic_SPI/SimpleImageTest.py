@@ -18,22 +18,23 @@ vector=bytearray()
 # return the list of XY positions where a known pattern
 # was recognized by the neurons and which category was recognized
 #----------------------------------------------
-posX=[]
-posY=[]
-cats=[]
 def surveyROS(image, rosL, rosT, rosW, rosH, stepX, stepY):
   objNbr=0
-  for y in range(rosT, rosT + rosH, stepY):
-    for x in range(rosL, rosL + rosW, stepX):
-      vlen, vector=GetGreySubsample(image, x, y, roiW, roiH, bW, bH, normalize)
+  ctrX=[]
+  ctrY=[]
+  cats=[]
+  for y in range(rosT, rosT + rosH - roiH, stepY):
+    for x in range(rosL, rosL + rosW - roiW, stepX):
+      vlen, vector =GetGreySubsample(image, x, y, roiW, roiH, bW, bH, normalize)
       dist, cat, nid = nm.BestMatch(vector, vlen)
       if (dist!=0xFFFF):
-        # store the position and category if the neurons recognize something
-        posX.append(x)
-        posY.append(y)
+        # If the neurons recognize something
+        # store the center position of the recognized ROI and its recognized category
+        ctrX.append(int(x + roiW/2))
+        ctrY.append(int(y + roiH/2))
         cats.append(cat)
         objNbr=objNbr+1
-  return(objNbr)
+  return(objNbr, ctrX, ctrY, cats)
 #-----------------------------------------------------
 # Extract a subsample of the ROI at the location X,Y
 # using a block size bW*bH and amplitude normalization on or off
@@ -136,8 +137,9 @@ rosW= int(imW/3)
 rosH= int(imH/3)
 rosL= int(imCtrX - rosW/2)
 rosT= int(imCtrY - rosH/2)
-stepX = int(8)
-stepY = int(8)
+stepX = 4
+stepY = 4
+objNbr, posX, posY, cats =surveyROS(imgl, rosL, rosT, rosW, rosH, stepX, stepY)
 
 # prepare image to display ROS + object overlay
 imdisp2= imgl.copy()
@@ -145,7 +147,6 @@ cv.rectangle(imdisp2, (rosL,rosT),(rosL+rosW, rosT+rosH),(255,0,0),1)
 cv.imshow('Scan ROS', imdisp2)
 cv.waitKey(3)
 
-objNbr=surveyROS(imgl, rosL, rosT, rosW, rosH, stepX, stepY)
 print("Recognized objects: " + repr(objNbr))
 for i in range (0,objNbr):
   cv.circle(imdisp2,(posX[i],posY[i]), 1, (0,0,255), -1)

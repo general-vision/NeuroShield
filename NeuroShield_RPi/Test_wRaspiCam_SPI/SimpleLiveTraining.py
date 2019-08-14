@@ -59,6 +59,9 @@ def GetGreySubsample(image, roiL, roiT, roiW, roiH, bW, bH, normalize):
   # return the length of the vector which must be less or equal to 256
   return p, vector
 
+
+
+
 #-------------------------------------------------
 # Select a NeuroMem platform
 # 0=simu, 1=NeuroStack, 2=NeuroShield, 4=Brilliant
@@ -100,15 +103,8 @@ bW = int(8)
 bH = int(8)
 normalize = int(1)
 
-# Learn ROI at center of the image
-vlen, vector=GetGreySubsample(imgl, roiL, roiT, roiW, roiH, bW, bH, normalize)
-nm.Learn(vector,vlen,1)
-# Learn a counter example ROI at an offset of roi/2 right and down
-vlen, vector=GetGreySubsample(imgl, roiL + roiW/2, roiT + roiT/2, roiW, roiH, bW, bH, normalize)
-ncount = nm.Learn(vector,vlen,0)
-print("ncount =" + repr(ncount))
+print("Type a target # when ready between[1-9]")
 
-print("Monitoring...")
 font                   = cv.FONT_HERSHEY_SIMPLEX
 fontScale              = 0.5
 fontColor              = (255,0,0)
@@ -120,12 +116,21 @@ while (1==1):
   imgl = cv.cvtColor(imsrc, cv.COLOR_BGR2GRAY)
   vlen, vector =GetGreySubsample(imgl, roiL, roiT, roiW, roiH, bW, bH, normalize)
   dist, cat, nid = nm.BestMatch(vector, vlen)
-  if dist==65535:
-    roiLbel=""
+  if cat==65535:
+    roiLabel=""
   else:
     roiLabel= "Cat " + str(cat) + " @ Distance " + str(dist)
-  print(roiLabel)
   cv.rectangle(imsrc,(roiL, roiT),(roiL+roiW, roiT+roiH),(255,0,0),1)
   cv.putText(imsrc,roiLabel, (roiL, roiT - 10), font, fontScale, fontColor,lineType)
   cv.imshow('Video', imsrc)
-  cv.waitKey(3)
+  c=cv.waitKey(1)
+  if (c > 48) & (c < 57):
+    catL= c-48
+    print("Learning target " + str(catL))
+    # Learn ROI at center of the image
+    vlen, vector=GetGreySubsample(imgl, roiL, roiT, roiW, roiH, bW, bH, normalize)
+    nm.Learn(vector,vlen,catL)
+    # Learn a counter example ROI at an offset of roi/2 right and down
+    vlen, vector=GetGreySubsample(imgl, roiL + roiW/2, roiT + roiT/2, roiW, roiH, bW, bH, normalize)
+    ncount = nm.Learn(vector,vlen,0)
+    print("ncount =" + repr(ncount))
